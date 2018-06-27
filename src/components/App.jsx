@@ -32,15 +32,8 @@ class App extends React.Component {
     )
   }
 
-
   componentWillUnmount() {
     base.removeBinding(this.ref);
-  }
-
-  updateFish = (key, updatedFish) => {
-    const fishes = { ...this.state.fishes };
-    fishes[key] = updatedFish;
-    this.setState({ fishes })
   }
 
   addFish = (fish) => {
@@ -52,6 +45,19 @@ class App extends React.Component {
     this.setState({
       fishes
     });
+  }
+
+  updateFish = (key, updatedFish) => {
+    const fishes = { ...this.state.fishes };
+    fishes[key] = updatedFish;
+    this.setState({ fishes })
+  }
+
+  deleteFish = (key) => {
+    const fishes = { ...this.state.fishes };
+    //update the state this way need to firebase
+    fishes[key] = null;
+    this.setState({ fishes }); 
   }
 
   loadSamplesFishes = () => {
@@ -85,6 +91,7 @@ class App extends React.Component {
         <Inventory
           addFish={this.addFish}
           updateFish={this.updateFish}
+          deleteFish={this.deleteFish}
           loadSamplesFishes={this.loadSamplesFishes}
           fishes={this.state.fishes}
         />
