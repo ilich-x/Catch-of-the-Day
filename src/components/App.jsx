@@ -78,7 +78,7 @@ class App extends React.Component {
     this.setState({
       order: order
     });
-  }
+  };
 
   render() {
     return (
